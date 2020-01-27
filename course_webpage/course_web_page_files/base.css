@@ -1,0 +1,59 @@
+.full-screen img { width: 100%; }
+
+body.syllabus {
+  margin: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 25px;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: #222222;
+  background-color: #F8F8F8;
+  letter-spacing: 1px;
+}
+
+.syllabus table th, .syllabus table td { padding: 10px 5px;  }
+.syllabus table th {
+  vertical-align: top;
+}
+
+.syllabus h1 {
+  font-size: 35pt;
+}
+
+.syllabus h2 {
+  font-size: 30pt;
+}
+
+.syllabus h3 {
+  font-size: 25pt;
+}
+
+.tutorial {
+   background-color: blue;
+}
+
+.lab {
+  background-color: #F5D76E;
+}
+
+.exam {
+  background-color: #DC3023;
+}
+
+
+
+.table-homework {
+  border-collapse: collapse;
+  width: 1200px;
+}
+
+.table-homework tr th {
+  background-color: lightblue;
+}
+
+.table-homework tr th, .table-homework tr td {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
