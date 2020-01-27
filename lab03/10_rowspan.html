@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <style>
+      table { border-collapse: collapse; }
+      table td, table th { border: 1px solid black; padding: 10px; }
+      table thead tr { background-color: #bdc3c7; }
+      table tfoot tr { background-color: #ecf0f1; }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Name</th>
+          <th>&nbsp</th>
+        </tr>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Andrew</td>
+          <td rowspan="2">Forward</td>
+          <td>92%</td>
+        </tr>
+        <tr>
+          <td>78%</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">Average</th>
+          <th>85%</th>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
