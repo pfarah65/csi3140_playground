@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+      var countBy = 18;
+      var maxNum = 100;
+      var count = 0;
+      document.writeln("Counting by " + countBy + " up to a max of " + maxNum);
+      while (true) {
+        count += 1;
+        if (count > maxNum) { 
+          break;
+        } else if (count % countBy != 0) {
+          continue;
+        } else {
+          document.writeln("<li>" + count + "</li>");  
+        }
+      }
+    </script>
+  </body>
+</html>
