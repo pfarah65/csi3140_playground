@@ -1,13 +1,17 @@
+var counter = 0;
+var rolesLeft;
 window.onload = function() {
-  var counter = 0;
   let held = 0;
 
+
   var roller = document.getElementById("roller");
+  rolesLeft = this.document.getElementById('rolesLeft')
   roller.addEventListener(
     "click",
     function() {
       console.log(counter);
-      if (counter < 3) {
+      if (counter < 2) {
+        rolesLeft.innerHTML--;
         for (let i = 0; i < 5; i++) {
           if (Dice.held.length == 0) {
             Dice.showDie("die0" + (i + 1), Dice.roll(i));
@@ -47,7 +51,7 @@ window.onload = function() {
           }
         }
         counter++;
-        if(counter == 3) {
+        if(counter == 2) {
           roller.disabled = true;
           counter = 0;
         }
@@ -131,8 +135,16 @@ function upperSection(item,number){
       return value === number;
   }).length * number
     item.innerHTML= parseInt(item.innerHTML)+points;
-    counter = 0;
+    counter = -1;
     roller.disabled = false;
+    rolesLeft.innerHTML = 3;
+    Dice.held = [];
+    die1.innerHTML = "Hold";
+    die2.innerHTML = "Hold";
+    die3.innerHTML = "Hold";
+    die4.innerHTML = "Hold";
+    die5.innerHTML = "Hold";
+
     roller.click();
 
   }
