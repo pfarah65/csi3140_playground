@@ -1,13 +1,13 @@
 window.onload = function() {
-  let counter = 0;
+  var counter = 0;
   let held = 0;
-
 
   var roller = document.getElementById("roller");
   roller.addEventListener(
     "click",
     function() {
-      if (counter < 25) {
+      console.log(counter);
+      if (counter < 3) {
         for (let i = 0; i < 5; i++) {
           if (Dice.held.length == 0) {
             Dice.showDie("die0" + (i + 1), Dice.roll(i));
@@ -47,8 +47,10 @@ window.onload = function() {
           }
         }
         counter++;
-      } else {
-        roller.disabled = true;
+        if(counter == 3) {
+          roller.disabled = true;
+          counter = 0;
+        }
       }
     },
     false
@@ -120,3 +122,19 @@ window.onload = function() {
     false
   );
 };
+function upperSection(item,number){
+  console.log(item.innerHTML);
+  if(Dice.history.includes(number)){
+
+
+    let points =     Dice.history.filter(function(value){
+      return value === number;
+  }).length * number
+    item.innerHTML= parseInt(item.innerHTML)+points;
+    counter = 0;
+    roller.disabled = false;
+    roller.click();
+
+  }
+  console.log(number);
+}
