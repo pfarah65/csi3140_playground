@@ -1,6 +1,8 @@
 window.onload = function() {
   let counter = 0;
   let held = 0;
+
+
   var roller = document.getElementById("roller");
   roller.addEventListener(
     "click",
