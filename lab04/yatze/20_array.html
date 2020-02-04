@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+function showArray(name, arr) 
+{
+  var output = "Array "+ name +" ["+ arr.length+"] is [";
+  for (var i=0, len = arr.length; i < len; i++) {
+    output += arr[i] + ", ";
+  }
+  output += "]<br>";
+  document.writeln(output);
+}
+
+var a = new Array(1, 2, 3);
+var b = [1, 2, 3];
+var c = [];
+var d = new Array(3);
+var e = [,,,];
+c.push(1);
+c.push(2);
+c.push(3);
+
+showArray("a", a);
+showArray("b", b);
+showArray("c", c);
+showArray("d", d);
+showArray("e", e);
+
+    </script>
+  </body>
+</html>
+
+

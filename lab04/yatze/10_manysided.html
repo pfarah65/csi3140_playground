@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link type="text/css" rel="stylesheet" href="07_dice.css">
+    <script type="text/javascript" src="10_dice.js"></script>
+  </head>
+  <body>
+
+    <div class="dice-group">
+      <div id="die01" class="dice-container"></div>
+    </div>
+    <button id="roller">Roll</button>
+
+    <script type="text/javascript">
+
+window.onload = function()
+{
+
+  Dice.min = 1;
+  Dice.max = 25;
+
+  var roller = document.getElementById("roller");
+  roller.onclick = function () {
+    Dice.showDie("die01", Dice.roll());
+  }
+
+  Dice.showDie("die01", 0);
+}
+    </script>
+  </body>
+</html>

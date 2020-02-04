@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+var fibonacci = (function () {
+    var memo = [0, 1];
+    var fib = function (n) {
+        var result = memo[n];
+        if (typeof(result) !== 'number') {
+            result = fib(n-1) + fib(n-2);
+            memo[n] = result;
+        }
+        return result;
+    };
+    return fib;
+}());
+
+function showFibonacci(n) {
+  var answer = fibonacci(n);
+  document.writeln("fibonacci("+ n +") = " + answer + "<br>");
+}
+
+showFibonacci(0);
+showFibonacci(1);
+showFibonacci(2);
+showFibonacci(3);
+showFibonacci(4);
+showFibonacci(5);
+showFibonacci(6);
+    </script>
+  </body>
+</html>
+
+
