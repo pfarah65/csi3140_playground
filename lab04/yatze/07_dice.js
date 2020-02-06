@@ -7,7 +7,7 @@ var Dice = (function() {
   entity.roll = function(position) {
     var nextValue = Math.floor(1 + Math.random() * 6);
     this.history[position] = nextValue;
-    console.log(this.history);
+    
     return nextValue;
   }
 
@@ -25,7 +25,7 @@ var Dice = (function() {
   entity.hold = function(position) {
     this.held.push(position)
     this.held = this.held.sort();
-    console.log(this.held);
+    
   }
 
   entity.showDie = function(id, num) {

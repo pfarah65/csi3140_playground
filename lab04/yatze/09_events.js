@@ -2,10 +2,14 @@ var counter = 0;
 var rolesLeft;
 var held = 0;
 var totalScore;
+var rounds = 13;
+var roundsCounter;
+var yatzees = 0;
 
 window.onload = function() {
   var roller = document.getElementById("roller");
   rolesLeft = this.document.getElementById("rolesLeft");
+  roundsCounter = this.document.getElementById("roundsLeft");
   roller.addEventListener(
     "click",
     function() {
@@ -127,36 +131,133 @@ window.onload = function() {
   totalScore = this.document.getElementById("totalScore");
 };
 function upperSection(item, number) {
+  let points = 0;
   if (Dice.history.includes(number)) {
-    let points =
+    points =
       Dice.history.filter(function(value) {
         return value === number;
       }).length * number;
     item.innerHTML = parseInt(item.innerHTML) + points;
   }
-  newRound();
+  points == 0?newRound(false):newRound(true)
 }
-function newRound() {
-  counter = -1;
-  roller.disabled = false;
-  rolesLeft.innerHTML = 3;
-  Dice.held = [];
-  die1.innerHTML = "Hold";
-  die2.innerHTML = "Hold";
-  die3.innerHTML = "Hold";
-  die4.innerHTML = "Hold";
-  die5.innerHTML = "Hold";
-  held = 0;
-  roller.click();
-  setScore();
+function newRound(enabled) {
+  if(enabled && rounds != 0){
+    counter = -1;
+    roller.disabled = false;
+    rolesLeft.innerHTML = 3;
+    Dice.held = [];
+    die1.innerHTML = "Hold";
+    die2.innerHTML = "Hold";
+    die3.innerHTML = "Hold";
+    die4.innerHTML = "Hold";
+    die5.innerHTML = "Hold";
+    held = 0;
+    roller.click();
+    setScore();
+    rounds--;
+    roundsCounter.innerHTML = rounds;
+  }
+
 }
 
 function setScore() {
   let points = 0;
 
-  for (let row = 1; row < 7; row++) {
+  for (let row = 1; row < 14; row++) {
     let cell = document.getElementById("scoresTable").rows[row].cells[1];
     points += parseInt(cell.innerHTML);
   }
   document.getElementById("totalScore").innerHTML = points;
+}
+
+const threeOfAKind = (item) =>{
+  let counts = {};
+  let kind = false
+  let points = 0;
+  Dice.history.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+  Object.keys(counts).forEach(function(key) {
+    if(counts[key] >= 3){
+      kind = true;
+      points = Dice.history.reduce((a, b) => a + b, 0)
+    } 
+  });
+
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+
+}
+const fourOfAKind = (item) =>{
+  let counts = {};
+  let kind = false
+  let points = 0;
+  Dice.history.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+  Object.keys(counts).forEach(function(key) {
+    if(counts[key] >= 4){
+      kind = true;
+      points = Dice.history.reduce((a, b) => a + b, 0)
+    } 
+  });
+
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+}
+
+const smallStraight = (item) => {
+  let points = 0;
+  let straight = false;
+
+  let numbers = [... new Set(Dice.history.sort())]
+  console.log(numbers);
+  for (let i = 0; i<2;i++){
+    if(numbers[i+1] == numbers[i] + 1 && numbers[i+2] == numbers[i] + 2 && numbers[i+3] == numbers[i] + 3 ){
+      straight = true;
+    } 
+  }
+  if(straight) points = 30;
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+}
+
+const bigStraight = (item) => {
+  let points = 0;
+  let straight = false;
+
+  let numbers = [... new Set(Dice.history.sort())]
+  console.log(numbers);
+  let i = 0;
+    if(numbers[i+1] == numbers[i] + 1 && numbers[i+2] == numbers[i] + 2 && numbers[i+3] == numbers[i] + 3  && numbers[i+4] == numbers[i] + 4){
+      straight = true;
+  }
+  if(straight) points = 40;
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+}
+
+const fullHouse = (item) => {
+  let points = 0;
+
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+}
+
+const yahtzee = (item) => {
+  
+  let points = 0;
+  if([ ... new Set(Dice.history)].length == 1){
+    yatzees++;
+    points = 50;
+    if(yatzees > 1){
+      points+=100;
+    }
+  }
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
+}
+
+const chance = (item) => {
+  let points = 0;
+  points = Dice.history.reduce((a, b) => a + b, 0)
+  item.innerHTML = parseInt(item.innerHTML) + points;
+  points == 0?newRound(false):newRound(true)
 }
