@@ -1,15 +1,14 @@
 var counter = 0;
 var rolesLeft;
+var held = 0;
+var totalScore;
+
 window.onload = function() {
-  let held = 0;
-
-
   var roller = document.getElementById("roller");
-  rolesLeft = this.document.getElementById('rolesLeft')
+  rolesLeft = this.document.getElementById("rolesLeft");
   roller.addEventListener(
     "click",
     function() {
-      console.log(counter);
       if (counter < 2) {
         rolesLeft.innerHTML--;
         for (let i = 0; i < 5; i++) {
@@ -51,7 +50,7 @@ window.onload = function() {
           }
         }
         counter++;
-        if(counter == 2) {
+        if (counter == 2) {
           roller.disabled = true;
           counter = 0;
         }
@@ -125,28 +124,39 @@ window.onload = function() {
     },
     false
   );
+  totalScore = this.document.getElementById("totalScore");
 };
-function upperSection(item,number){
-  console.log(item.innerHTML);
-  if(Dice.history.includes(number)){
-
-
-    let points =     Dice.history.filter(function(value){
-      return value === number;
-  }).length * number
-    item.innerHTML= parseInt(item.innerHTML)+points;
-    counter = -1;
-    roller.disabled = false;
-    rolesLeft.innerHTML = 3;
-    Dice.held = [];
-    die1.innerHTML = "Hold";
-    die2.innerHTML = "Hold";
-    die3.innerHTML = "Hold";
-    die4.innerHTML = "Hold";
-    die5.innerHTML = "Hold";
-
-    roller.click();
-
+function upperSection(item, number) {
+  if (Dice.history.includes(number)) {
+    let points =
+      Dice.history.filter(function(value) {
+        return value === number;
+      }).length * number;
+    item.innerHTML = parseInt(item.innerHTML) + points;
   }
-  console.log(number);
+  newRound();
+}
+function newRound() {
+  counter = -1;
+  roller.disabled = false;
+  rolesLeft.innerHTML = 3;
+  Dice.held = [];
+  die1.innerHTML = "Hold";
+  die2.innerHTML = "Hold";
+  die3.innerHTML = "Hold";
+  die4.innerHTML = "Hold";
+  die5.innerHTML = "Hold";
+  held = 0;
+  roller.click();
+  setScore();
+}
+
+function setScore() {
+  let points = 0;
+
+  for (let row = 1; row < 7; row++) {
+    let cell = document.getElementById("scoresTable").rows[row].cells[1];
+    points += parseInt(cell.innerHTML);
+  }
+  document.getElementById("totalScore").innerHTML = points;
 }
