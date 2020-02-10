@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+var memoizer = function (formula) {
+  var memo = [];
+  var recur = function (n) {
+    var result = memo[n];
+    if (typeof result == 'undefined') {
+      result = formula(recur, n);
+      memo[n] = result;
+    }
+    return result;
+  };
+  return recur;
+};
+
+var factorial = memoizer(function (recur, n) {
+  document.writeln("factorial("+ n +")<br>");
+  if (n < 0) {
+    document.writeln("> invalid input ["+ n +"]<br>");
+    return;
+  } else if (n == 0) {
+    document.writeln("> base case 0! = 1<br>");
+    return 1;
+  } else {
+    document.writeln("> recursive case "+ n +"! = "+ n +" * ("+ n +"-1)!<br>");
+    return n * recur(n - 1);
+  }
+});
+
+function showFactorial(n) {
+  document.writeln("<br>CALCULATING " + n +"! ... <br>");
+  var answer = factorial(n);
+  document.writeln("ANSWER " + answer + "<br>");
+}
+
+showFactorial(-10);
+showFactorial(0);
+showFactorial(1);
+showFactorial(4);
+showFactorial(2);
+showFactorial(3);
+
+    </script>
+  </body>
+</html>
+
+

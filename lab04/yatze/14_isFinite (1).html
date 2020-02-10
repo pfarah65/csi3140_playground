@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+function showIsFinite(input) 
+{
+  if (isFinite(input)) {
+    document.writeln("Yes, ["+ input +"] is finite<br>");
+  } else {
+    document.writeln("No, ["+ input +"] is not finite<br>");
+  }
+}
+
+showIsFinite(null);
+showIsFinite(10);
+showIsFinite(NaN);
+showIsFinite(Number.POSITIVE_INFINITY);
+showIsFinite(Number.NEGATIVE_INFINITY);
+showIsFinite(Number.BLAH);
+
+    </script>
+  </body>
+</html>

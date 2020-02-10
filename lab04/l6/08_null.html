@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+      var isNull = function(name, variable) {
+        if (variable == null) {
+          document.writeln("<p>"+ name + " is null</p>");
+        } else {
+          document.writeln("<p>"+ name + " is NOT null; value is ["+ variable +"]</p>");
+        }        
+      }
+
+      var a;
+      isNull("a (new var)", a);
+
+      a = null;
+      isNull("a (assigned null)", a);
+
+      a = "";
+      isNull("a (assigned empty string)", a);
+
+      delete a;
+      isNull("a (deleted)", a);
+    </script>
+  </body>
+</html>

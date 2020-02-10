@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+function factorial(n) {
+  document.writeln("factorial("+ n +")<br>");
+  if (n < 0) {
+    return;
+  } else {
+    var runningTotal = 1;
+    for (var i = n; i > 0; i--) {
+      runningTotal *= i;
+    }
+    return runningTotal;
+  }
+}
+
+function showFactorial(n) {
+  document.writeln("<br>CALCULATING " + n +"! ... <br>");
+  var answer = factorial(n);
+  document.writeln("ANSWER " + answer + "<br>");
+}
+
+showFactorial(-10);
+showFactorial(0);
+showFactorial(1);
+showFactorial(2);
+showFactorial(3);
+showFactorial(4);
+
+    </script>
+  </body>
+</html>
+
+

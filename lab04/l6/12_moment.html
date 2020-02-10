@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="moment.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var showDate = function(prefix, m) {
+        document.writeln(prefix + ": " + m.format('MMMM Do YYYY, h:mm:ss a') + "<br>");  
+      }
+
+      var today = moment();
+      showDate("NOW", today);
+      showDate("LAST WEEK", today.subtract(1, 'weeks'));
+      showDate("TOMORROW", today.add(1, 'day'));
+    </script>
+  </body>
+</html>

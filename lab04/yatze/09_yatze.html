@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <link type="text/css" rel="stylesheet" href="07_dice.css">
+  <script type="text/javascript" src="07_dice.js"></script>
+</head>
+
+<body>
+
+  <div class="dice-group">
+    <div id="die01" class="dice-container"></div>
+    <div id="die02" class="dice-container"></div>
+    <div id="die03" class="dice-container"></div>
+    <div id="die04" class="dice-container"></div>
+    <div id="die05" class="dice-container"></div>
+  </div>
+  <button id="die1">Hold</button>
+
+  <button id="die2">Hold</button>
+
+  <button id="die3">Hold</button>
+
+  <button id="die4">Hold</button>
+
+  <button id="die5">Hold</button>
+  <br>
+  <button style="margin-top: 0;" id="roller">Roll</button>
+  <h4>Dice rolls left: </h4>
+  <h4 id="rolesLeft">2</h4>
+  <h2>Rounds:</h2>
+  <h2 id="roundsLeft">13</h2>
+  <div id="scores">
+    <table id="scoresTable">
+      <tr>
+        <th> Score Board (click on number to receive points)</th>
+      </tr>
+      <tr>
+        <td>Ones</td>
+        <td id="one" onclick='upperSection(this,1)'>0</td>
+      </tr>
+      <tr>
+        <td>Twos</td>
+        <td id="two" onclick='upperSection(this,2)'>0</td>
+      </tr>
+      <tr>
+        <td>Threes</td>
+        <td id="three" onclick='upperSection(this,3)'>0</td>
+      </tr>
+      <tr>
+        <td>Fours</td>
+        <td id="four" onclick='upperSection(this,4)'>0</td>
+      </tr>
+      <tr>
+        <td>Fives</td>
+        <td id="five" onclick='upperSection(this,5)'>0</td>
+      </tr>
+      <tr>
+        <td>Sixes</td>
+        <td id="six" onclick='upperSection(this,6)'>0</td>
+      </tr>
+      <tr>
+        <td>Three of a Kind</td>
+        <td id="threeOfAKind" onclick='threeOfAKind(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Four of a Kind</td>
+        <td id="fourOfAKind" onclick='fourOfAKind(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Small Straight</td>
+        <td id="smallStraight" onclick='smallStraight(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Big Straight</td>
+        <td id="bigStraight" onclick='bigStraight(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Full House</td>
+        <td id="fullHouse" onclick='fullHouse(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Yahtzee</td>
+        <td id="yahtzee" onclick='yahtzee(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Chance</td>
+        <td id=chance" onclick='chance(this)'>0</td>
+      </tr>
+      <tr>
+        <td>Total Score</td>
+        <td id="totalScore">0</td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="09_events.js"></script>
+</body>
+
+</html>

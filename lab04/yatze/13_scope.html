@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="text/javascript">
+
+x = "GlobalX";
+var y = "QuasiGlobalY";
+
+function showY() {
+  var y = "ScopedY"
+  var p = "ScopedP"
+  document.writeln("=== start showY =====<br>");
+  document.writeln("x = " + x + "<br>");
+  document.writeln("y = " + y + "<br>");
+  document.writeln("p = " + p + "<br>");
+  if (typeof(z) != "undefined") {
+    document.writeln("z = " + z + "<br>");
+  } else {
+    document.writeln("z is undefined<br>");
+  }
+  document.writeln("=== end showY =====<br>");
+}
+
+function addZ()
+{
+  z = "AlsoGlobalZ";
+}
+
+showY();
+addZ();
+document.writeln("=== start main =====<br>");
+document.writeln("x = " + x + "<br>");
+document.writeln("y = " + y + "<br>");
+document.writeln("z = " + z + "<br>");
+if (typeof(p) != "undefined") {
+  document.writeln("p = " + p + "<br>");
+} else {
+  document.writeln("p is undefined<br>");
+}
+document.writeln("=== end main =====<br>");
+showY();
+    </script>
+  </body>
+</html>
